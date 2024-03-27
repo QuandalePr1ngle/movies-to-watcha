@@ -1,5 +1,5 @@
 import json
-
+movies_sort = 1
 movies = []
 
 # read movies file into variable
@@ -22,10 +22,19 @@ while True:
         # https://www.w3schools.com/python/python_lists_add.asp
         title = input("Enter movie title: ")
         rating = input("Enter movie rating: ")
+        dictionary = {
+        "title": title,
+        "rating": rating,
+        }
+        movies.append(dictionary)
         pass
     elif choice == "2":
-        # https://www.w3schools.com/python/python_lists_sort.asp
-        # https://www.w3schools.com/python/python_dictionaries_access.asp
+        def sort_by_rating(movies):
+            return  int(movies['rating'])
+        movies.sort(key = sort_by_rating, reversed = True)
+        while movies_sort < 10:
+            movies_sort = movies_sort + 1
+            print(movies[:movies_sort])
         pass
     elif choice == "3":
         # https://www.w3schools.com/python/python_lists_comprehension.asp
@@ -47,3 +56,5 @@ while True:
 # writing movies to file
 with open("movies.json", "w") as movies_file:
     json.dump(movies, movies_file)
+    
+
